@@ -63,9 +63,9 @@ app.post('/api/shorturl', function(req, res) {
   });
 }); 
 
-app.get('/api/shorturl/:short_url', (req, res) => {
+app.get('/api/shorturl/:short_url', async (req, res) => {
     const short_url = req.params.short_url
-    const urlDoc = Url.findOne({ short_url: +short_url})
+    const urlDoc = await Url.findOne({ short_url: +short_url})
     res.redirect(urlDoc.url)
 })
 
